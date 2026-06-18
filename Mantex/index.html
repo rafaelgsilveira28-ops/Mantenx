@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestão de Frota — Alta | Planep</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen" class="login-screen">
+  <div class="login-box">
+    <div class="login-logos">
+      <div class="login-logo-item">
+        <!-- Logo Alta SVG -->
+        <svg class="login-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="#E02B20"/>
+          <rect x="22" y="38" width="56" height="8" rx="2" fill="white"/>
+          <rect x="22" y="52" width="56" height="8" rx="2" fill="white"/>
+          <rect x="22" y="66" width="40" height="8" rx="2" fill="white"/>
+        </svg>
+        <span class="login-logo-name alta">ALTA</span>
+      </div>
+      <div class="login-logo-divider"></div>
+      <div class="login-logo-item">
+        <!-- Logo Planep SVG -->
+        <svg class="login-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="#1B5FA8"/>
+          <path d="M65 30 Q80 50 65 70 Q50 80 35 70 L50 50 Z" fill="white" opacity="0.9"/>
+          <path d="M35 30 Q20 50 35 70" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span class="login-logo-name planep">PLANEP</span>
+      </div>
+    </div>
+    <h2>Gestão de Frota</h2>
+    <p class="login-sub">Alta Engenharia de Infraestrutura | Planep</p>
+    <div class="field"><label>E-mail</label><input type="email" id="login-email" placeholder="seu@email.com" /></div>
+    <div class="field" style="margin-top:10px"><label>Senha</label><input type="password" id="login-password" placeholder="••••••••" /></div>
+    <div id="login-error" class="error-msg" style="display:none"></div>
+    <button class="btn-primary full" style="margin-top:1.25rem" onclick="fazerLogin()">Entrar</button>
+    <p class="login-register">Não tem conta? <a href="#" onclick="mostrarRegistro()">Criar conta</a></p>
+  </div>
+</div>
+
+<!-- REGISTRO -->
+<div id="register-screen" class="login-screen" style="display:none">
+  <div class="login-box">
+    <div class="login-logos">
+      <div class="login-logo-item">
+        <svg class="login-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="#E02B20"/>
+          <rect x="22" y="38" width="56" height="8" rx="2" fill="white"/>
+          <rect x="22" y="52" width="56" height="8" rx="2" fill="white"/>
+          <rect x="22" y="66" width="40" height="8" rx="2" fill="white"/>
+        </svg>
+        <span class="login-logo-name alta">ALTA</span>
+      </div>
+      <div class="login-logo-divider"></div>
+      <div class="login-logo-item">
+        <svg class="login-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="#1B5FA8"/>
+          <path d="M65 30 Q80 50 65 70 Q50 80 35 70 L50 50 Z" fill="white" opacity="0.9"/>
+          <path d="M35 30 Q20 50 35 70" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span class="login-logo-name planep">PLANEP</span>
+      </div>
+    </div>
+    <h2>Criar conta</h2>
+    <div class="field"><label>Nome completo</label><input type="text" id="reg-nome" placeholder="Seu nome" /></div>
+    <div class="field" style="margin-top:10px"><label>E-mail</label><input type="email" id="reg-email" placeholder="seu@email.com" /></div>
+    <div class="field" style="margin-top:10px"><label>Senha</label><input type="password" id="reg-password" placeholder="Mínimo 6 caracteres" /></div>
+    <div id="reg-error" class="error-msg" style="display:none"></div>
+    <button class="btn-primary full" style="margin-top:1.25rem" onclick="fazerRegistro()">Criar conta</button>
+    <p class="login-register">Já tem conta? <a href="#" onclick="mostrarLogin()">Entrar</a></p>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logos">
+        <svg class="sidebar-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="#E02B20"/>
+          <rect x="22" y="38" width="56" height="8" rx="2" fill="white"/>
+          <rect x="22" y="52" width="56" height="8" rx="2" fill="white"/>
+          <rect x="22" y="66" width="40" height="8" rx="2" fill="white"/>
+        </svg>
+        <div class="sidebar-logo-divider"></div>
+        <svg class="sidebar-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="#1B5FA8"/>
+          <path d="M65 30 Q80 50 65 70 Q50 80 35 70 L50 50 Z" fill="white" opacity="0.9"/>
+          <path d="M35 30 Q20 50 35 70" stroke="white" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="sidebar-logo-text">
+          <span>ALTA</span>
+          <span>PLANEP</span>
+        </div>
+      </div>
+      <div class="sidebar-subtitle">Gestão de Frota</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" onclick="ir('dashboard',this)"><span class="nav-icon">▦</span> Dashboard</a>
+      <a href="#" class="nav-item" onclick="ir('veiculos',this)"><span class="nav-icon">🚗</span> Veículos</a>
+      <a href="#" class="nav-item" onclick="ir('manutencoes',this)"><span class="nav-icon">🔧</span> Manutenções</a>
+      <a href="#" class="nav-item" onclick="ir('documentos',this)"><span class="nav-icon">📄</span> Documentos</a>
+      <a href="#" class="nav-item" onclick="ir('relatorios',this)"><span class="nav-icon">📊</span> Relatórios</a>
+    </nav>
+    <div class="sidebar-user">
+      <span id="user-name-sidebar">—</span>
+      <button class="btn-logout" onclick="fazerLogout()">Sair</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+    <!-- DASHBOARD -->
+    <section id="page-dashboard" class="page active">
+      <div class="page-header">
+        <div><h1>Dashboard</h1><p class="page-sub" id="data-hoje"></p></div>
+        <button class="btn-primary" onclick="ir('manutencoes'); abrirModalMan()">+ Nova manutenção</button>
+      </div>
+      <div class="kpi-grid" id="kpi-dashboard"></div>
+      <div class="alertas-section" id="alertas-section"></div>
+      <div class="dashboard-grid">
+        <div class="card"><h3>Manutenções por status</h3><div id="chart-status" class="bar-chart"></div></div>
+        <div class="card"><h3>Manutenções por tipo</h3><div id="chart-tipo" class="bar-chart"></div></div>
+      </div>
+      <div class="card" style="margin-top:1rem">
+        <h3>Últimas manutenções</h3>
+        <table class="tabela" id="tabela-recentes"></table>
+      </div>
+    </section>
+
+    <!-- VEÍCULOS -->
+    <section id="page-veiculos" class="page">
+      <div class="page-header">
+        <div><h1>Veículos</h1><p class="page-sub">Cadastro da frota</p></div>
+        <button class="btn-primary" onclick="abrirModalVei()">+ Novo veículo</button>
+      </div>
+      <div class="filtros">
+        <input type="text" id="busca-vei" placeholder="Buscar por placa ou modelo..." oninput="filtrarVei()" />
+        <select id="filtro-contrato-vei" onchange="filtrarVei()"><option value="">Todos os contratos</option></select>
+        <select id="filtro-status-vei" onchange="filtrarVei()">
+          <option value="">Todos os status</option>
+          <option value="ativo">Ativo</option>
+          <option value="manutencao">Em manutenção</option>
+          <option value="inativo">Inativo</option>
+        </select>
+      </div>
+      <div class="vei-grid" id="vei-grid"></div>
+    </section>
+
+    <!-- MANUTENÇÕES -->
+    <section id="page-manutencoes" class="page">
+      <div class="page-header">
+        <div><h1>Manutenções</h1><p class="page-sub">Histórico e ordens abertas</p></div>
+        <button class="btn-primary" onclick="abrirModalMan()">+ Nova manutenção</button>
+      </div>
+      <div class="filtros">
+        <input type="text" id="busca-man" placeholder="Buscar por placa ou descrição..." oninput="filtrarMan()" />
+        <select id="filtro-tipo-man" onchange="filtrarMan()">
+          <option value="">Todos os tipos</option>
+          <option value="oleo">Troca de óleo/filtros</option>
+          <option value="pneus">Pneus e alinhamento</option>
+          <option value="revisao">Revisão periódica</option>
+          <option value="corretiva">Corretiva</option>
+        </select>
+        <select id="filtro-status-man" onchange="filtrarMan()">
+          <option value="">Todos os status</option>
+          <option value="pendente">Pendente</option>
+          <option value="andamento">Em andamento</option>
+          <option value="concluido">Concluído</option>
+        </select>
+        <select id="filtro-contrato-man" onchange="filtrarMan()"><option value="">Todos os contratos</option></select>
+      </div>
+      <div class="card">
+        <table class="tabela">
+          <thead><tr><th>OS</th><th>Placa</th><th>Tipo</th><th>Descrição</th><th>Contrato</th><th>Hodômetro</th><th>Status</th><th>Data</th><th>Ações</th></tr></thead>
+          <tbody id="tbody-man"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DOCUMENTOS -->
+    <section id="page-documentos" class="page">
+      <div class="page-header">
+        <div><h1>Documentos</h1><p class="page-sub">Controle de vencimentos</p></div>
+        <button class="btn-primary" onclick="abrirModalDoc()">+ Novo documento</button>
+      </div>
+      <div class="filtros">
+        <input type="text" id="busca-doc" placeholder="Buscar por placa..." oninput="filtrarDoc()" />
+        <select id="filtro-tipo-doc" onchange="filtrarDoc()">
+          <option value="">Todos os tipos</option>
+          <option value="ipva">IPVA</option>
+          <option value="seguro">Seguro</option>
+          <option value="vistoria">Vistoria</option>
+          <option value="licenciamento">Licenciamento</option>
+          <option value="outro">Outro</option>
+        </select>
+        <select id="filtro-contrato-doc" onchange="filtrarDoc()"><option value="">Todos os contratos</option></select>
+      </div>
+      <div class="card">
+        <table class="tabela">
+          <thead><tr><th>Placa</th><th>Tipo</th><th>Descrição</th><th>Contrato</th><th>Vencimento</th><th>Situação</th><th>Ações</th></tr></thead>
+          <tbody id="tbody-doc"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- RELATÓRIOS -->
+    <section id="page-relatorios" class="page">
+      <div class="page-header">
+        <div><h1>Relatórios</h1><p class="page-sub">Indicadores da frota</p></div>
+        <button class="btn-secondary" onclick="exportarCSV()">↓ Exportar CSV</button>
+      </div>
+      <div class="kpi-grid" id="kpi-relatorios"></div>
+      <div class="dashboard-grid" style="margin-top:1.5rem">
+        <div class="card"><h3>Manutenções por contrato</h3><div id="chart-contrato" class="bar-chart"></div></div>
+        <div class="card"><h3>Veículos por status</h3><div id="chart-vei-status" class="bar-chart"></div></div>
+      </div>
+      <div class="card" style="margin-top:1rem">
+        <h3>Histórico completo</h3>
+        <table class="tabela">
+          <thead><tr><th>OS</th><th>Placa</th><th>Tipo</th><th>Contrato</th><th>Hodômetro</th><th>Status</th><th>Data</th><th>Custo (R$)</th></tr></thead>
+          <tbody id="tbody-rel"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- MODAL VEÍCULO -->
+<div id="modal-vei" class="modal-overlay" style="display:none" onclick="fecharModalVei(event)">
+  <div class="modal">
+    <div class="modal-header"><h2 id="modal-vei-titulo">Novo veículo</h2><button class="modal-close" onclick="fecharModalVei()">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="vei-edit-id" />
+      <div class="form-grid">
+        <div class="field"><label>Placa *</label><input type="text" id="vei-placa" placeholder="ABC-1234" style="text-transform:uppercase" /></div>
+        <div class="field"><label>Modelo *</label><input type="text" id="vei-modelo" placeholder="Ex: VW Delivery 9.170" /></div>
+        <div class="field"><label>Ano</label><input type="number" id="vei-ano" placeholder="2022" min="1980" max="2100" /></div>
+        <div class="field"><label>Cor</label><input type="text" id="vei-cor" placeholder="Ex: Branco" /></div>
+        <div class="field"><label>Contrato *</label><input type="text" id="vei-contrato" placeholder="Ex: Contrato SP-01" /></div>
+        <div class="field"><label>Hodômetro atual (km)</label><input type="number" id="vei-hodometro" placeholder="Ex: 45000" min="0" /></div>
+        <div class="field"><label>Chassi</label><input type="text" id="vei-chassi" placeholder="Número do chassi" /></div>
+        <div class="field"><label>Status</label>
+          <select id="vei-status">
+            <option value="ativo">Ativo</option>
+            <option value="manutencao">Em manutenção</option>
+            <option value="inativo">Inativo</option>
+          </select>
+        </div>
+      </div>
+      <div class="field" style="margin-top:0.75rem"><label>Observações</label><textarea id="vei-obs" rows="2" placeholder="Informações adicionais..."></textarea></div>
+      <div id="vei-form-error" class="error-msg" style="display:none"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="fecharModalVei()">Cancelar</button>
+      <button class="btn-primary" onclick="salvarVei()">Salvar veículo</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL MANUTENÇÃO -->
+<div id="modal-man" class="modal-overlay" style="display:none" onclick="fecharModalMan(event)">
+  <div class="modal">
+    <div class="modal-header"><h2 id="modal-man-titulo">Nova manutenção</h2><button class="modal-close" onclick="fecharModalMan()">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="man-edit-id" />
+      <div class="form-grid">
+        <div class="field"><label>Placa *</label><select id="man-placa"><option value="">Selecione a placa...</option></select></div>
+        <div class="field"><label>Tipo *</label>
+          <select id="man-tipo">
+            <option value="">Selecione...</option>
+            <option value="oleo">Troca de óleo/filtros</option>
+            <option value="pneus">Pneus e alinhamento</option>
+            <option value="revisao">Revisão periódica</option>
+            <option value="corretiva">Corretiva</option>
+          </select>
+        </div>
+        <div class="field"><label>Status</label>
+          <select id="man-status">
+            <option value="pendente">Pendente</option>
+            <option value="andamento">Em andamento</option>
+            <option value="concluido">Concluído</option>
+          </select>
+        </div>
+        <div class="field"><label>Hodômetro na OS (km)</label><input type="number" id="man-hodometro" placeholder="Ex: 45000" min="0" /></div>
+        <div class="field"><label>Data prevista</label><input type="date" id="man-data" /></div>
+        <div class="field"><label>Custo (R$)</label><input type="number" id="man-custo" placeholder="0,00" min="0" step="0.01" /></div>
+        <div class="field"><label>Responsável / Oficina</label><input type="text" id="man-responsavel" placeholder="Ex: Oficina Central" /></div>
+      </div>
+      <div class="field" style="margin-top:0.75rem"><label>Descrição do serviço *</label><textarea id="man-descricao" rows="3" placeholder="Descreva o serviço realizado ou a realizar..."></textarea></div>
+      <div id="man-form-error" class="error-msg" style="display:none"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="fecharModalMan()">Cancelar</button>
+      <button class="btn-primary" onclick="salvarMan()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DOCUMENTO -->
+<div id="modal-doc" class="modal-overlay" style="display:none" onclick="fecharModalDoc(event)">
+  <div class="modal">
+    <div class="modal-header"><h2 id="modal-doc-titulo">Novo documento</h2><button class="modal-close" onclick="fecharModalDoc()">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="doc-edit-id" />
+      <div class="form-grid">
+        <div class="field"><label>Placa *</label><select id="doc-placa"><option value="">Selecione a placa...</option></select></div>
+        <div class="field"><label>Tipo *</label>
+          <select id="doc-tipo">
+            <option value="">Selecione...</option>
+            <option value="ipva">IPVA</option>
+            <option value="seguro">Seguro</option>
+            <option value="vistoria">Vistoria</option>
+            <option value="licenciamento">Licenciamento</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+        <div class="field"><label>Descrição</label><input type="text" id="doc-descricao" placeholder="Ex: Seguro Porto Seguro" /></div>
+        <div class="field"><label>Vencimento *</label><input type="date" id="doc-vencimento" /></div>
+        <div class="field"><label>Valor (R$)</label><input type="number" id="doc-valor" placeholder="0,00" min="0" step="0.01" /></div>
+        <div class="field"><label>Número / Apólice</label><input type="text" id="doc-numero" placeholder="Ex: AP-123456" /></div>
+      </div>
+      <div class="field" style="margin-top:0.75rem"><label>Observações</label><textarea id="doc-obs" rows="2" placeholder="Informações adicionais..."></textarea></div>
+      <div id="doc-form-error" class="error-msg" style="display:none"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="fecharModalDoc()">Cancelar</button>
+      <button class="btn-primary" onclick="salvarDoc()">Salvar documento</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast" style="display:none"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
